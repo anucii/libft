@@ -6,7 +6,7 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/03/13 17:58:07 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/03/17 10:18:13 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,16 +31,16 @@ CCFLAGS = -Wall -Wextra -Werror -g
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -urc $@ $^
-	ranlib $@
+	@ar -urc $@ $^
+	@ranlib $@
 
 $(OBJ) : $(SRC) $(HDR)
-	gcc $(CCFLAGS) -c $(SRC) -I .
+	@gcc $(CCFLAGS) -c $(SRC) -I .
 
 clean :
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
