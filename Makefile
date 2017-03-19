@@ -6,11 +6,11 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/03/17 10:18:13 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/03/19 12:33:20 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PRONY : clean fclean
+.PHONY : clean fclean
 
 NAME = libft.a
 SRC = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
