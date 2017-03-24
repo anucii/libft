@@ -6,14 +6,15 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/03/19 12:33:20 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/03/24 12:01:12 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : clean fclean
+.PHONY : clean fclean re
 
 NAME = libft.a
-SRC = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
+SRCDIR = srcs/
+SRC_NAME = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 	  ft_memmove.c ft_strchr.c ft_strncpy.c ft_isalnum.c ft_memset.c ft_strclr.c ft_strnequ.c\
 	  ft_isalpha.c ft_putbstr.c ft_strcmp.c ft_strnew.c ft_isascii.c ft_putchar.c\
 	  ft_strcpy.c ft_strnstr.c ft_isdigit.c ft_putchar_fd.c ft_strdup.c ft_strrchr.c ft_isprint.c\
@@ -24,8 +25,11 @@ SRC = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 	  ft_wordcount.c ft_putstrtab.c ft_strncmp.c ft_strdel.c ft_lstnew.c ft_lstadd.c ft_lstdel.c\
 	  ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstappend.c ft_lstinsert.c\
 	  ft_realloc.c
-OBJ = $(SRC:.c=.o)
-HDR = libft.h
+SRC = $(addprefix $(SRCDIR), $(SRC_NAME))
+OBJDIR = builts/
+OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
+HDRDIR = includes/
+HDR = $(addprefix $(HDRDIR), libft.h)
 CCFLAGS = -Wall -Wextra -Werror -g
 
 all : $(NAME)
@@ -34,11 +38,12 @@ $(NAME) : $(OBJ)
 	@ar -urc $@ $^
 	@ranlib $@
 
-$(OBJ) : $(SRC) $(HDR)
-	@gcc $(CCFLAGS) -c $(SRC) -I .
+$(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
+	@mkdir $(OBJDIR) 2> /dev/null || true
+	@gcc $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
 
 clean :
-	@rm -f $(OBJ)
+	@rm -rf $(OBJDIR)
 
 fclean : clean
 	@rm -f $(NAME)
