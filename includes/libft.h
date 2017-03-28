@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:19:39 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/03/16 16:40:14 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/03/28 14:48:52 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# define BUFF_SIZE 64
 
 typedef struct		s_str
 {
@@ -27,6 +29,11 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+typedef struct		s_buffer
+{
+	int				fildes;
+	char			buf[BUFF_SIZE + 1];
+}					t_buffer;
 int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 int					ft_isascii(int c);
@@ -56,6 +63,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putbstr(const void *s, size_t len, char sep);
 size_t				ft_strlen(const char *s);
 size_t				ft_wordcount(char const *s, char c);
+int					get_next_line(const int fd, char **line);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);
