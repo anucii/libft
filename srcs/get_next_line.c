@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 15:25:57 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/03/28 14:52:13 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/05/19 17:49:03 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char		*ft_append(char *s1, char *s2, size_t len)
 	return (ret);
 }
 
-static int		getline(t_list **alst, char **line)
+static int		get_line(t_list **alst, char **line)
 {
 	t_buffer	*ptr;
 	char		*nl;
@@ -48,7 +48,7 @@ static int		getline(t_list **alst, char **line)
 		*line = (*line ? ft_append(*line, ptr->buf, ft_strlen(*line) +\
 					ft_strlen(ptr->buf)) : ft_strdup(ptr->buf));
 		ft_bzero((void **)&(ptr->buf), BUFF_SIZE);
-		getline(alst, line);
+		get_line(alst, line);
 	}
 	return (1);
 }
@@ -96,5 +96,5 @@ int				get_next_line(const int fd, char **line)
 		*line = NULL;
 	if (!is_set(fd, &start, &lst))
 		set_link(fd, &start, &lst);
-	return (lst ? getline(&lst, line) : -1);
+	return (lst ? get_line(&lst, line) : -1);
 }
