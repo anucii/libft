@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 16:09:47 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/05/19 17:42:07 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/05/20 23:21:22 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ ssize_t	ft_wcharlen(wchar_t wcr)
 	if (wcr < 0)
 		ret = -1;
 	else if (wcr < 0x80)
-		ret = 2;
+		ret = 1;
 	else if (wcr < 0x800)
-		ret = 3;
+		ret = 2;
 	else if (wcr < 0x10000)
-		ret = 4;
+		ret = 3;
 	else if (wcr < 0x200000)
-		ret = 5;
+		ret = 4;
 	else
 		ret = -1;
 	return (ret);

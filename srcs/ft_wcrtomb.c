@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 19:59:32 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/05/19 17:43:34 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/05/20 23:21:50 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ssize_t			ft_wcrtomb(unsigned char *mbs, wchar_t val)
 	unsigned char	swap;
 
 	i = -1;
-	max = ft_wcharlen(val) - 1;
+	max = ft_wcharlen(val);
 	while (++i < max)
 	{
 		if (max == 1)
@@ -32,14 +32,14 @@ ssize_t			ft_wcrtomb(unsigned char *mbs, wchar_t val)
 		else if (i == max - 1)
 		{
 			swap = val & (0x7f >> i);
-			mbs[max - i] = swap | (0xF0 << (4 - max));
+			mbs[max - i - 1] = swap | (0xF0 << (4 - max));
 		}
 		else
 		{
 			swap = val & 0x3F;
-			mbs[max - i] = swap | 0x80;
+			mbs[max - i - 1] = swap | 0x80;
 			val >>= 6;
 		}
 	}
-	return (max + 1);
+	return (max);
 }
