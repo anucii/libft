@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/08 16:59:33 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/06/08 17:00:50 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/06/08 17:24:54 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strdup(const char *s1)
 			s2[i] = s1[i];
 			i++;
 		}
-		ft_strdel(&s1);
+		ft_strdel((char **)&s1);
 		return (s2);
 	}
 	else
