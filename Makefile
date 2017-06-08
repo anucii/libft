@@ -6,7 +6,7 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/06/05 19:32:50 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/06/08 17:02:05 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC_NAME = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 	  ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstappend.c ft_lstinsert.c\
 	  ft_realloc.c ft_islower.c ft_isupper.c ft_isspace.c ft_isblank.c ft_abs.c\
 	  get_next_line.c init_wslen.c ft_putwchar.c ft_putwstr.c ft_putwstr_fd.c\
-	  ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c ft_wcstombs.c ft_strsub_free.c
+	  ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c ft_wcstombs.c ft_strsub_free.c\
+	  ft_strdup_free.c
 SRC = $(addprefix $(SRCDIR), $(SRC_NAME))
 OBJDIR = builts/
 OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
