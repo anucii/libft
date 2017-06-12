@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 15:21:49 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/06/12 23:02:04 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/06/12 23:04:49 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char			**ft_strsplit(char const *s, char c)
 				ft_memdel((void **)&map);
 				return (ret);
 			}
-			ft_memdell((void **)&map);
+			ft_memdel((void **)&map);
 		}
 	}
 	return (NULL);
