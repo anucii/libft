@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wcharlen.c                                      :+:      :+:    :+:   */
+/*   ft_strsub_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 16:09:47 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/05/20 23:21:22 by jdaufin          ###   ########.fr       */
+/*   Created: 2017/06/05 17:20:22 by jdaufin           #+#    #+#             */
+/*   Updated: 2017/06/05 17:22:32 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-**	WARNING : this function is not designed to handle the private unicode
-**	planes, ie values from 0x200000 to 0x7FFFFFFF. Please rewrite it if
-**	needed.
-*/
-
-ssize_t	ft_wcharlen(wchar_t wcr)
+char	*ft_strsub_free(char const *s, unsigned int start, size_t len)
 {
-	ssize_t	ret;
+	char	*substr;
 
-	ret = 0;
-	if (wcr < 0)
-		ret = -1;
-	else if (wcr < 0x80)
-		ret = 1;
-	else if (wcr < 0x800)
-		ret = 2;
-	else if (wcr < 0x10000)
-		ret = 3;
-	else if (wcr < 0x200000)
-		ret = 4;
+	if (s && (substr = (char *)ft_memalloc(len + 1)))
+	{
+		ft_strlcpy(substr, &s[start], len + 1);
+		ft_memdel((void **)&s);
+		return (substr);
+	}
 	else
-		ret = -1;
-	return (ret);
+		return (NULL);
 }

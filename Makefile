@@ -6,7 +6,7 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/05/19 17:51:06 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/06/12 23:01:35 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC_NAME = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 	  ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstappend.c ft_lstinsert.c\
 	  ft_realloc.c ft_islower.c ft_isupper.c ft_isspace.c ft_isblank.c ft_abs.c\
 	  get_next_line.c init_wslen.c ft_putwchar.c ft_putwstr.c ft_putwstr_fd.c\
-	  ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c ft_wcstombs.c
+	  ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c ft_wcstombs.c ft_strsub_free.c
 SRC = $(addprefix $(SRCDIR), $(SRC_NAME))
 OBJDIR = builts/
 OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
@@ -37,17 +37,17 @@ CCFLAGS = -Wall -Wextra -Werror -g
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@ar -urc $@ $^
-	@ranlib $@
+	ar -urc $@ $^
+	ranlib $@
 
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
-	@mkdir $(OBJDIR) 2> /dev/null || true
-	@gcc $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
+	mkdir $(OBJDIR) 2> /dev/null || true
+	gcc $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
 
 clean :
-	@rm -rf $(OBJDIR)
+	rm -rf $(OBJDIR)
 
 fclean : clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 15:21:49 by jdaufin           #+#    #+#             */
-/*   Updated: 2016/12/08 21:14:56 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/06/12 23:04:49 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,19 @@ static void		set_wdmap(t_str **pmap, char const *s, char c)
 	i = 0;
 	if (*s != c && *s)
 	{
-		pmap[0][i].addr = ft_memalloc(sizeof(char *));
-		pmap[0][i].addr = (char *)s;
-		pmap[0][i].len = wdlen(s, c);
+		(*pmap)[i].addr = (char *)s;
+		(*pmap)[i].len = wdlen(s, c);
 	}
 	else
 	{
-		pmap[0][i].addr = ft_memalloc(sizeof(char *));
-		pmap[0][i].addr = nextwd(s, c);
-		pmap[0][i].len = wdlen(pmap[0][i].addr, c);
+		(*pmap)[i].addr = nextwd(s, c);
+		(*pmap)[i].len = wdlen((*pmap)[i].addr, c);
 	}
-	while (pmap[0][i].addr != NULL)
+	while ((*pmap)[i].addr != NULL)
 	{
 		i++;
-		pmap[0][i].addr = ft_memalloc(sizeof(char *));
-		pmap[0][i].addr = nextwd(pmap[0][i - 1].addr + pmap[0][i - 1].len, c);
-		pmap[0][i].len = wdlen(pmap[0][i].addr, c);
+		(*pmap)[i].addr = nextwd((*pmap)[i - 1].addr + (*pmap)[i - 1].len, c);
+		(*pmap)[i].len = wdlen((*pmap)[i].addr, c);
 	}
 }
 
@@ -104,6 +101,7 @@ char			**ft_strsplit(char const *s, char c)
 				ft_memdel((void **)&map);
 				return (ret);
 			}
+			ft_memdel((void **)&map);
 		}
 	}
 	return (NULL);
