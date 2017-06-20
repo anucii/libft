@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:19:39 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/06/12 23:23:22 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/06/20 12:56:05 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <locale.h>
+# include <inttypes.h>
 # include <wchar.h>
 # define BUFF_SIZE 64
 
@@ -46,6 +47,7 @@ typedef struct		s_wslen
 }					t_wslen;
 
 int					ft_atoi(const char *str);
+intmax_t			ft_atoimax(const char *str);
 char				*ft_itoa(int n);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
