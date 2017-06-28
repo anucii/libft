@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:19:39 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/06/28 16:32:05 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/06/28 19:08:30 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct		s_wslen
 int					ft_atoi(const char *str);
 intmax_t			ft_atoimax(const char *str);
 char				*ft_itoa(int n);
+char				*ft_itoa_base(intmax_t nbr, char *base);
+char				*ft_uitoa_base(uintmax_t nbr, char *base);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isdigit(int c);
@@ -112,9 +114,12 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strsub_free(char const *s, unsigned int start, \
 		size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char const *s1, _Bool b1, char const *s2, \
+		_Bool b2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit_blanks(char *s);
+void				ft_stabdel(char ***pstab);
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
