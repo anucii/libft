@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 15:39:44 by jdaufin           #+#    #+#             */
-/*   Updated: 2016/12/06 19:11:41 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/07/12 21:35:53 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstappend(t_list **alst, t_list *new)
 		buf = *alst;
 		while (buf->next)
 			buf = buf->next;
-		new->next = buf->next;
+		new->next = NULL;
 		buf->next = new;
 	}
 }
