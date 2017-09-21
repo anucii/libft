@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:19:39 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/07/12 21:54:58 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/09/21 17:22:30 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <locale.h>
 # include <inttypes.h>
 # include <wchar.h>
-# define BUFF_SIZE 64
+# define BUFF_SIZE 4
 
 typedef struct		s_str
 {
