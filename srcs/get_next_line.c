@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/24 15:25:57 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/05/19 17:49:03 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/09/26 19:32:06 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ static int		get_line(t_list **alst, char **line)
 	char		*nl;
 	ssize_t		readbytes;
 
-	if (!line)
-		return (-1);
-	if (!*((ptr = (t_buffer *)((*alst)->content))->buf))
-		if ((readbytes = read(ptr->fildes, ptr->buf, BUFF_SIZE)) < 1)
-			return (!readbytes ? 0 : -1);
-	ptr->buf[BUFF_SIZE] = '\0';
+	ptr = (t_buffer *)((*alst)->content);
+	if ((readbytes = *(ptr->buf) ? ft_strlen(ptr->buf) :\
+				read(ptr->fildes, ptr->buf, BUFF_SIZE)) < 1)
+		return (!readbytes ? 0 : -1);
+	ptr->buf[readbytes < BUFF_SIZE ? readbytes : BUFF_SIZE] = '\0';
 	if ((nl = ft_strchr(ptr->buf, (int)'\n')))
 	{
 		*line = (*line ? ft_append(*line, ptr->buf, ft_strlen(*line) +\
