@@ -6,11 +6,11 @@
 #    By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2017/09/25 21:07:54 by jdaufin          ###   ########.fr        #
+#    Updated: 2017/09/29 21:12:53 by jdaufin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : clean fclean re
+.PHONY : all clean fclean re
 
 NAME = libft.a
 SRCDIR = srcs/
@@ -32,7 +32,7 @@ SRC_NAME = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 		   ft_putwstr_fd.c ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c\
 		   ft_wcstombs.c ft_strsub_free.c ft_atoimax.c ft_strsplit_blanks.c\
 		   ft_strjoin_free.c ft_itoa_base.c ft_uitoa_base.c ft_stabdel.c\
-		   ft_lstlen.c gnl_clean.c
+		   ft_lstlen.c
 SRC = $(addprefix $(SRCDIR), $(SRC_NAME))
 OBJDIR = builts/
 OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))

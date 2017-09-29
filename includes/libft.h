@@ -6,7 +6,7 @@
 /*   By: jdaufin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 16:19:39 by jdaufin           #+#    #+#             */
-/*   Updated: 2017/09/26 18:20:36 by jdaufin          ###   ########.fr       */
+/*   Updated: 2017/09/29 21:12:21 by jdaufin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 size_t				ft_strlen(const char *s);
 size_t				ft_wordcount(char const *s, char c);
 int					get_next_line(const int fd, char **line);
-int					gnl_clean(const int fd, char **line, _Bool clean);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strequ(char const *s1, char const *s2);
