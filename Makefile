@@ -38,6 +38,7 @@ OBJDIR = builts/
 OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
 HDRDIR = includes/
 HDR = $(addprefix $(HDRDIR), libft.h)
+CC = clang
 CCFLAGS = -Wall -Wextra -Werror -g
 
 all : $(NAME)
@@ -48,7 +49,7 @@ $(NAME) : $(OBJ)
 
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
 	mkdir $(OBJDIR) 2> /dev/null || true
-	gcc $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
+	$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
 
 clean :
 	rm -rf $(OBJDIR)
