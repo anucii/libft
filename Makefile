@@ -6,11 +6,11 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2020/10/16 17:21:14 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2020/12/12 16:02:43 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re start
 
 NAME = libft.a
 SRCDIR = srcs/
@@ -41,20 +41,28 @@ HDR = $(addprefix $(HDRDIR), libft.h)
 CC = clang
 CCFLAGS = -Wall -Wextra -Werror -g
 
-all : $(NAME)
+all : start $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -Uurc $@ $^
-	ranlib $@
+	@echo ""
+	@echo "Linking object files…" && ar -Uurc $@ $^
+	@ranlib $@
+	@echo "$(NAME) ready"
+
+start :
+	@echo "Compiling sources…"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
-	mkdir $(OBJDIR) 2> /dev/null || true
-	$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
+	@[ -d $(OBJDIR) ] || mkdir $(OBJDIR)
+	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
+	@echo -n "."
 
 clean :
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
+	@echo "Object files removed"
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "$(NAME) removed"
 
 re : fclean all
