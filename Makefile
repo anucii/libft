@@ -6,7 +6,7 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2020/12/12 16:02:43 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2020/12/12 16:04:13 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
 HDRDIR = includes/
 HDR = $(addprefix $(HDRDIR), libft.h)
 CC = clang
-CCFLAGS = -Wall -Wextra -Werror -g
+CCFLAGS = -Wall -Wextra -Werror
 
 all : start $(NAME)
 
