@@ -6,7 +6,7 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2020/12/12 16:04:13 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2021/04/30 14:02:18 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo ""
-	@echo "Linking object files…" && ar -Uurc $@ $^
+	@echo "Linking object files…" && ar -urc $@ $^
 	@ranlib $@
 	@echo "$(NAME) ready"
 
