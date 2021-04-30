@@ -6,7 +6,7 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2021/04/30 14:02:18 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2021/04/30 14:44:48 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ $(NAME) : $(OBJ)
 
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
 	@[ -d $(OBJDIR) ] || mkdir $(OBJDIR)
-	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR) && printf "%-32s \e[32mOK\e[0m\r" $< || printf "%-32s \e[31KO\e[0m\r" $<
+	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR) && printf "$< : \e[32mOK\e[0m%-32s \r" "" || printf "$< \e[31KO\e[0m%-32s \r" ""
 
 clean :
 	@rm -rf $(OBJDIR)
