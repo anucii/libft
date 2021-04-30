@@ -41,7 +41,7 @@ HDR = $(addprefix $(HDRDIR), libft.h)
 CC = clang
 CCFLAGS = -Wall -Wextra -Werror
 
-all : start $(NAME)
+all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo ""
@@ -49,13 +49,9 @@ $(NAME) : $(OBJ)
 	@ranlib $@
 	@echo "$(NAME) ready"
 
-start :
-	@echo "Compiling sources…"
-
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
 	@[ -d $(OBJDIR) ] || mkdir $(OBJDIR)
-	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR)
-	@echo -n "."
+	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR) && printf "%-32s \e[32mOK\e[0m\r" $< || printf "%-32s \e[31KO\e[0m\r" $<
 
 clean :
 	@rm -rf $(OBJDIR)
