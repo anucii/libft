@@ -6,11 +6,11 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2021/05/13 10:49:47 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2021/05/13 12:48:42 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re start
+.PHONY : all clean fclean re start printdemo
 
 NAME = libft.a
 SRCDIR = srcs/
@@ -70,3 +70,7 @@ fclean : clean
 	@echo "$(NAME) removed"
 
 re : fclean all
+
+printdemo : $(NAME)
+	@$(CC) $(CCFLAGS) -o printdemo demo.c -I $(HDRDIR) -L . -lft
+	./printdemo 1 test usage normal
