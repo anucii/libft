@@ -6,7 +6,7 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2021/04/30 14:47:59 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2021/05/13 10:49:47 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,13 @@ SRC_NAME = ft_atoi.c ft_memdel.c ft_strcat.c ft_strncat.c ft_bzero.c\
 		   ft_putwstr_fd.c ft_wcharlen.c ft_wcstrlen.c ft_wcrtomb.c\
 		   ft_wcstombs.c ft_strsub_free.c ft_atoimax.c ft_strsplit_blanks.c\
 		   ft_strjoin_free.c ft_itoa_base.c ft_uitoa_base.c ft_stabdel.c\
-		   ft_lstlen.c ft_linkdel.c ft_lstpop.c
+		   ft_lstlen.c ft_linkdel.c ft_lstpop.c\
+		   ft_printf.c get_queue.c mappers.c process_fmt.c converters_decimals.c\
+		   converters_unsigned.c converters_octal.c converters_hex.c\
+		   converters_specials.c get_integer_t.c get_special_t.c ft_parse.c checkers.c\
+		   set_flags.c init_tag.c ft_format.c set_empty.c converters_chars.c\
+		   get_txt_t.c cut_mbs.c transfer_prefixes.c is_0x.c launch_conversion.c\
+		   check_length.c fmt_unconvertible.c ft_printf_fd.c
 SRC = $(addprefix $(SRCDIR), $(SRC_NAME))
 OBJDIR = builts/
 OBJ = $(addprefix $(OBJDIR), $(SRC_NAME:.c=.o))
@@ -45,13 +51,15 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo ""
-	@echo "Linking object files…" && ar -Uurc $@ $^
-	@ranlib $@
-	@echo "$(NAME) ready"
+	@echo "Linking object files…" && ar -urc $@ $^
+	@ranlib $@ && echo "\033[32m$(NAME) ready\033[0m" \
+	|| echo "\033[31m$(NAME) failed\033[0m"
 
 $(OBJDIR)%.o : $(SRCDIR)%.c $(HDR)
 	@[ -d $(OBJDIR) ] || mkdir $(OBJDIR)
-	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR) && printf "$< : \e[32mOK\e[0m%-32s \r" "" || printf "$< : \e[31KO\e[0m%-32s \r" ""
+	@$(CC) $(CCFLAGS) -o $@  -c $< -I $(HDRDIR) \
+	&& printf "$< : \033[32mOK\033[0m%-32s \r" "" \
+	|| printf "$< \033[31mKO\033[0m%-32s \r" ""
 
 clean :
 	@rm -rf $(OBJDIR)
