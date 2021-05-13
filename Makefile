@@ -51,7 +51,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	@echo ""
-	@echo "Linking object files…" && ar -urc $@ $^
+	@echo "Linking object files…" && ar -Uurc $@ $^
 	@ranlib $@ && echo "\033[32m$(NAME) ready\033[0m" \
 	|| echo "\033[31m$(NAME) failed\033[0m"
 
