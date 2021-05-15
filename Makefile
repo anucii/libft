@@ -6,7 +6,7 @@
 #    By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/08 16:22:01 by jdaufin           #+#    #+#              #
-#    Updated: 2021/05/13 12:48:42 by jdaufin          ###   ########lyon.fr    #
+#    Updated: 2021/05/15 16:26:45 by jdaufin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,3 +74,4 @@ re : fclean all
 printdemo : $(NAME)
 	@$(CC) $(CCFLAGS) -o printdemo demo.c -I $(HDRDIR) -L . -lft
 	./printdemo 1 test usage normal
+	./printdemo 2 test print on stderr
