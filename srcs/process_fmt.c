@@ -6,7 +6,7 @@
 /*   By: jdaufin <jdaufin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 16:31:28 by jdaufin           #+#    #+#             */
-/*   Updated: 2021/05/13 10:26:27 by jdaufin          ###   ########lyon.fr   */
+/*   Updated: 2021/05/16 16:12:43 by jdaufin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,16 @@ void	process_fmt(va_list *pap, t_list *start)
 	t_list	*lst;
 	t_tag	*tag;
 	char	*check;
+	ssize_t	tags_count;
+	ssize_t	i;
 
 	if (pap && start)
 	{
 		lst = start;
+		tags_count = ft_lstlen(start);
+		i = -1;
 		tag = init_tag();
-		while (lst)
+		while (lst && (++i < tags_count))
 		{
 			check = (char *)lst->content;
 			if (check[0] == '%')
