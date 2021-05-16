@@ -10,6 +10,9 @@ int main(int ac, char **av)
 		ft_printf("usage: ./demo <target fd> <string1> … <string n>\n");
 		return 1;
 	}
+
+	//TODO : replace code below by a more systematic and broader test suite
+
 	i = 2;
 	fd = ft_atoi(av[1]);
 	while (i < ac)
@@ -23,24 +26,14 @@ int main(int ac, char **av)
 	ft_printf("ft_printf oddities [apparent but handled mismatches]\n\t- hex(Oxa1) for base10 int: %d\n", 0xa1);
 	ft_printf_fd(fd, "ft_printf_fd oddities [apparent but handled mismatches]\n\t- hex(Oxa1) for base10 int: %d\n", 0xa1);
 
+	ft_printf("\n\033[34mft_printf usage tests\033[0m\n");
+	ft_printf("ft_printf tricky test [more arguments than tags]\n\t%s\n", "First argument", "Ignored argument");
+	ft_printf("ft_printf tricky test [arguments but no tags]\n", "Undue argument");
 
-
-	ft_printf("\n\033[34mft_printf crash tests\033[0m\n");
-	ft_printf("ft_printf crash test [arguments wrong types]\n\t- int for string: %s\n", -1);
-	ft_printf("ft_printf crash test [arguments wrong types]\n\t- string for int: %d\n", "not really an int");
-	ft_printf("ft_printf crash test [arguments wrong types]\n\t- string for char: %c\n", "too long");
-	ft_printf("ft_printf crash test [arguments wrong types]\n\t- float for int: %d\n", 1.5);
-	ft_printf("ft_printf crash test [more tags than arguments]\n\t%s - %s\n", "One arg only");
-	ft_printf("ft_printf crash test [more arguments than tags]\n\t%s\n", "First argument", "Ignored argument");
-	ft_printf("ft_printf crash test [arguments but no tags]\n", "Undue argument");
-
-	ft_printf("\n\033[34mft_printf_fd crash tests\033[0m\n");
-	ft_printf_fd(fd, "ft_printf_fd crash test [arguments wrong types]\n\t- int for string: %s\n", -1);
-	ft_printf_fd(fd, "ft_printf_fd crash test [arguments wrong types]\n\t- string for int: %d\n", "not really an int");
-	ft_printf_fd(fd, "ft_printf_fd crash test [arguments wrong types]\n\t- string for char: %c\n", "too long");
-	ft_printf_fd(fd, "ft_printf_fd crash test [arguments wrong types]\n\t- float for int: %d\n", 1.5);	ft_printf_fd(fd, "ft_printf_fd crash test [more tags than arguments]\n\t%s - %s\n", "One arg only");
-	ft_printf_fd(fd, "ft_printf_fd crash test [more arguments than tags]\n\t%s\n", "First argument", "Ignored argument");
-	ft_printf_fd(fd, "ft_printf_fd crash test [arguments but no tags]\n", "Undue argument");
+	ft_printf("\n\033[34mft_printf_fd usage tests\033[0m\n");
+	ft_printf_fd(fd, "ft_printf_fd tricky test [more arguments than tags]\n\t%s\n", "First argument", "Ignored argument");
+	ft_printf_fd(fd, "ft_printf_fd tricky test [arguments but no tags]\n", "Undue argument");
 	
+	ft_printf("\n\033[34mEnd of demo\033[0m\n\t\t***\n");
 	return 0;
 }
